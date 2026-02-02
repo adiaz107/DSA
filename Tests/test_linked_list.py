@@ -99,6 +99,18 @@ class TestLinkedList(unittest.TestCase):
 
         self.assertEqual(ll.to_list(), [50])
 
+    def test_remove_from_front_value(self):
+
+        ll = LinkedList()
+
+        ll.add_to_front(50)
+        ll.add_to_front(60)
+        ll.add_to_front(70)
+
+        ll.remove_from_front()
+
+        self.assertEqual(ll.remove_from_front(), 60)
+
     def test_remove_from_front_empty(self):
 
         ll = LinkedList()

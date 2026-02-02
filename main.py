@@ -32,9 +32,12 @@ class LinkedList:
         if self.head is None:
             raise Exception("Cannot remove from front of empty Linked List!")
 
+        removed_value = self.head.data
         self.head = self.head.next
         if self.head is not None:
             self.head.prev = None
+
+        return removed_value
 
     def add_to_back(self, data):
         if self.head is None:
