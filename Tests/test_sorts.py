@@ -1,6 +1,7 @@
 import unittest
 
-from sorts import bubble_sort, insertion_sort, selection_sort, merge_sort
+from sorts import (bubble_sort, insertion_sort, selection_sort,
+                   merge_sort, in_place_quicksort)
 
 class TestSorts(unittest.TestCase):
 
@@ -75,6 +76,13 @@ class TestSorts(unittest.TestCase):
         self.assertEqual([1, 2, 3, 4, 5, 6, 7, 8, 9], merge_sort([1, 2, 3, 4, 5, 6, 7, 8, 9]))
 
         self.assertEqual([1, 2, 3, 4, 5, 6, 7, 8, 9], merge_sort([5, 2, 1, 9, 4, 7, 8, 3, 6]))
+
+    def test_quicksort(self):
+        self.assertEqual([1, 2, 3, 4, 5, 6, 7, 8, 9], in_place_quicksort([9, 8, 7, 6, 5, 4, 3, 2, 1]))
+
+        self.assertEqual([1, 2, 3, 4, 5, 6, 7, 8, 9], in_place_quicksort([1, 2, 3, 4, 5, 6, 7, 8, 9]))
+
+        self.assertEqual([1, 2, 3, 4, 5, 6, 7, 8, 9], in_place_quicksort([5, 2, 1, 9, 4, 7, 8, 3, 6]))
 
 if __name__ == '__main__':
     unittest.main()
