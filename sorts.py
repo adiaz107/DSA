@@ -77,29 +77,32 @@ def _quicksort_helper(arr, start, end):
     if end - start < 1:
         return arr
     else:
-
         pivot = (start + end) // 2
-        pivot_element = arr[pivot]
-
-        arr[start], arr[pivot] = arr[pivot], arr[start]
-
-        i = start + 1
-        j = end
-
-        while i <= j:
-            while i <= j and arr[i] <= pivot_element:
-                i += 1
-            while i <= j and arr[j] >= pivot_element:
-                j -= 1
-
-            if i <= j:
-                arr[i], arr[j] = arr[j], arr[i]
-                i += 1
-                j -= 1
-
-        arr[start], arr[j] = arr[j], arr[start]
+        j = _sort_pivot(arr, pivot, start, end)
 
         _quicksort_helper(arr, start, j - 1)
         _quicksort_helper(arr, j + 1, end)
 
         return arr
+
+def _sort_pivot(arr, pivot, start, end):
+    pivot_element = arr[pivot]
+
+    arr[start], arr[pivot] = arr[pivot], arr[start]
+
+    i = start + 1
+    j = end
+
+    while i <= j:
+        while i <= j and arr[i] <= pivot_element:
+            i += 1
+        while i <= j and arr[j] >= pivot_element:
+            j -= 1
+
+        if i <= j:
+            arr[i], arr[j] = arr[j], arr[i]
+            i += 1
+            j -= 1
+
+    arr[start], arr[j] = arr[j], arr[start]
+    return j
