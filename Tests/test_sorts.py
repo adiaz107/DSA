@@ -1,7 +1,8 @@
 import unittest
 
 from sorts import (bubble_sort, insertion_sort, selection_sort,
-                   merge_sort, in_place_quicksort)
+                   merge_sort, in_place_quicksort,
+                   radix_sort)
 
 class TestSorts(unittest.TestCase):
 
@@ -83,6 +84,14 @@ class TestSorts(unittest.TestCase):
         self.assertEqual([1, 2, 3, 4, 5, 6, 7, 8, 9], in_place_quicksort([1, 2, 3, 4, 5, 6, 7, 8, 9]))
 
         self.assertEqual([1, 2, 3, 4, 5, 6, 7, 8, 9], in_place_quicksort([5, 2, 1, 9, 4, 7, 8, 3, 6]))
+
+    def test_radix_sort(self):
+
+        arr = [21, 93, 44, 1, 57, 125, 560, 1719, 3, 6, 15]
+
+        expected = [1, 3, 6, 15, 21, 44, 57, 93, 125, 560, 1719]
+
+        self.assertEqual(expected, radix_sort(arr))
 
 if __name__ == '__main__':
     unittest.main()

@@ -106,3 +106,21 @@ def _sort_pivot(arr, pivot, start, end):
 
     arr[start], arr[j] = arr[j], arr[start]
     return j
+
+def radix_sort(arr):
+    # assumes we are sorting non-negative numbers up to 5 digits long
+    buckets = [[] for i in range(10)]
+
+    for i in range(5):
+        new_arr = []
+        for num in arr:
+            digit = (num // (10**i)) % 10
+            buckets[digit].append(num)
+
+        for bucket in buckets:
+            new_arr.extend(bucket)
+            bucket.clear()
+
+        arr = new_arr
+
+    return arr
